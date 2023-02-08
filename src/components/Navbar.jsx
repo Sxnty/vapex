@@ -15,7 +15,8 @@ import { ChevronDownIcon } from "@chakra-ui/icons";
 
 function Navbar() {
   return (
-    <Flex bg='#16213E'>
+    <header>
+        <Flex bg='#16213E'>
       <Box p="4">
         <Heading color='white'>Vapex</Heading>
       </Box>
@@ -35,6 +36,7 @@ function Navbar() {
         </Flex>
       </Box>
     </Flex>
+    </header>
   );
 }
 

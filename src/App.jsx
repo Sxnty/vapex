@@ -1,12 +1,11 @@
-import { useState } from 'react'
 import { ChakraProvider } from '@chakra-ui/react'
 import Navbar from './components/Navbar'
+import ItemListContainer from './components/ItemListContainer'
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <ChakraProvider>
       <Navbar/>
+      <ItemListContainer title='Productos recomendados.'/>
     </ChakraProvider>
   )
 }
