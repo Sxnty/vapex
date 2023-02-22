@@ -1,12 +1,9 @@
 import React from "react";
 import {
   Card,
-  CardHeader,
   CardBody,
   Heading,
   Stack,
-  StackDivider,
-  Box,
   Text,
   Divider,
   CardFooter,
@@ -14,9 +11,10 @@ import {
   Button,
   Image,
 } from "@chakra-ui/react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 function Cards({ type }) {
   const category = useParams;
+  const { id } = useParams();
   console.log(type);
   return (
     <>
@@ -27,6 +25,13 @@ function Cards({ type }) {
               <Heading size="md">{category.category}</Heading>
               <CardBody>
                 <Stack mt="6" spacing="3">
+                  <Image
+                    src={e.image}
+                    alt={e.name}
+                    borderRadius="lg"
+                    w="50%"
+                    m="auto"
+                  />
                   <Heading size="md">{e.name}</Heading>
                   <Text>{e.description}</Text>
                   <Text color="blue.600" fontSize="2xl">
@@ -35,24 +40,24 @@ function Cards({ type }) {
                 </Stack>
               </CardBody>
             </Card>
+            <Card maxW="sm">
+              <Divider />
+              <CardFooter>
+                <ButtonGroup spacing="2">
+                  <Button variant="solid" colorScheme="blue">
+                    Añadir al carrito
+                  </Button>
+                  <Link to={`/item/${e.id}`}>
+                    <Button variant="ghost" colorScheme="blue">
+                      Detalles
+                    </Button>
+                  </Link>
+                </ButtonGroup>
+              </CardFooter>
+            </Card>
           </div>
         );
       })}
-
-      {/* <Card maxW='sm'>
-
-  <Divider />
-  <CardFooter>
-    <ButtonGroup spacing='2'>
-      <Button variant='solid' colorScheme='blue'>
-        Añadir al carrito
-      </Button>
-      <Button variant='ghost' colorScheme='blue'>
-        Detalles
-      </Button>
-    </ButtonGroup>
-  </CardFooter>
-</Card> */}
     </>
   );
 }
