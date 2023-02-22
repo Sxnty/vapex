@@ -1,27 +1,46 @@
-import React from 'react'
-import { Card, CardHeader, CardBody, Heading, Stack, StackDivider, Box, Text, Divider, CardFooter, ButtonGroup, Button, Image } from '@chakra-ui/react'
-function Cards({product, price, imagen}) {
+import React from "react";
+import {
+  Card,
+  CardHeader,
+  CardBody,
+  Heading,
+  Stack,
+  StackDivider,
+  Box,
+  Text,
+  Divider,
+  CardFooter,
+  ButtonGroup,
+  Button,
+  Image,
+} from "@chakra-ui/react";
+import { useParams } from "react-router-dom";
+function Cards({ type }) {
+  const category = useParams;
+  console.log(type);
   return (
     <>
-    <Card maxW='sm'>
-  <CardBody>
-    <Image
-      src={imagen}
-      alt='Green double couch with wooden legs'
-      borderRadius='lg'
-      w='50%'
-      m='auto'
-    />
-    <Stack mt='6' spacing='3'>
-      <Heading size='md'>{product}</Heading>
-      <Text>
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente odio repellendus maxime molestias explicabo nobis.
-      </Text>
-      <Text color='blue.600' fontSize='2xl'>
-        ${price}
-      </Text>
-    </Stack>
-  </CardBody>
+      {type.map((e) => {
+        return (
+          <div key={e.id}>
+            <Card maxW="sm">
+              <Heading size="md">{category.category}</Heading>
+              <CardBody>
+                <Stack mt="6" spacing="3">
+                  <Heading size="md">{e.name}</Heading>
+                  <Text>{e.description}</Text>
+                  <Text color="blue.600" fontSize="2xl">
+                    ${e.price}
+                  </Text>
+                </Stack>
+              </CardBody>
+            </Card>
+          </div>
+        );
+      })}
+
+      {/* <Card maxW='sm'>
+
   <Divider />
   <CardFooter>
     <ButtonGroup spacing='2'>
@@ -33,9 +52,9 @@ function Cards({product, price, imagen}) {
       </Button>
     </ButtonGroup>
   </CardFooter>
-</Card>
+</Card> */}
     </>
-  )
+  );
 }
 
-export default Cards
+export default Cards;
